@@ -1,0 +1,376 @@
+/**
+ * BPG Elevside - Stylesheet
+ * Bergen Private Gymnas / Metis Utdanning
+ *
+ * Dette stilarket kan hostes eksternt og deles på tvers av sider.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&display=swap');
+
+/* ==========================================================================
+   CSS Custom Properties (Design Tokens)
+   ========================================================================== */
+
+:root {
+    /* Colors - Background */
+    --bg-warm: #FAF8F5;
+    --bg-card: #FFFFFF;
+
+    /* Colors - Text */
+    --text-primary: #1A1A1A;
+    --text-secondary: #5A5A5A;
+
+    /* Colors - Accent */
+    --accent-forest: #2D5A47;
+    --accent-forest-light: #3D7A5F;
+    --accent-amber: #D4A574;
+    --accent-rose: #C17B7B;
+
+    /* Shadows */
+    --shadow-soft: 0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
+    --shadow-hover: 0 4px 12px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.1);
+
+    /* Layout */
+    --radius: 16px;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Typography */
+    --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-display: 'Fraunces', Georgia, serif;
+}
+
+/* ==========================================================================
+   Base / Reset
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--bg-warm);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle background texture */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(circle at 20% 80%, rgba(45, 90, 70, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(212, 165, 116, 0.04) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.header__badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-forest);
+    background: rgba(45, 90, 70, 0.08);
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    margin-bottom: 1.25rem;
+}
+
+.header__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.header__subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+/* ==========================================================================
+   Links Grid
+   ========================================================================== */
+
+.links-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+/* ==========================================================================
+   Link Card Component
+   ========================================================================== */
+
+.link-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--bg-card);
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: inherit;
+    box-shadow: var(--shadow-soft);
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+    overflow: hidden;
+}
+
+.link-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--accent-forest);
+    transform: scaleY(0);
+    transition: transform var(--transition);
+}
+
+.link-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.link-card:hover::before {
+    transform: scaleY(1);
+}
+
+/* Auth variant */
+.link-card--auth::before {
+    background: var(--accent-amber);
+}
+
+/* ==========================================================================
+   Link Card - Icon
+   ========================================================================== */
+
+.link-card__icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(45, 90, 70, 0.06);
+    border-radius: 12px;
+    transition: background var(--transition);
+}
+
+.link-card--auth .link-card__icon {
+    background: rgba(212, 165, 116, 0.12);
+}
+
+.link-card:hover .link-card__icon {
+    background: rgba(45, 90, 70, 0.1);
+}
+
+.link-card--auth:hover .link-card__icon {
+    background: rgba(212, 165, 116, 0.2);
+}
+
+.link-card__icon svg {
+    width: 24px;
+    height: 24px;
+    color: var(--accent-forest);
+}
+
+.link-card--auth .link-card__icon svg {
+    color: var(--accent-amber);
+}
+
+/* ==========================================================================
+   Link Card - Content
+   ========================================================================== */
+
+.link-card__content {
+    flex: 1;
+    min-width: 0;
+}
+
+.link-card__title {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.125rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.link-card__description {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+/* Auth badge */
+.link-card__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent-amber);
+    background: rgba(212, 165, 116, 0.15);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+}
+
+.link-card__badge svg {
+    width: 10px;
+    height: 10px;
+}
+
+/* ==========================================================================
+   Link Card - Arrow
+   ========================================================================== */
+
+.link-card__arrow {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: var(--text-secondary);
+    opacity: 0.4;
+    transform: translateX(0);
+    transition:
+        opacity var(--transition),
+        transform var(--transition);
+}
+
+.link-card:hover .link-card__arrow {
+    opacity: 1;
+    transform: translateX(4px);
+    color: var(--accent-forest);
+}
+
+.link-card--auth:hover .link-card__arrow {
+    color: var(--accent-amber);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+.footer__text {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+}
+
+.footer__text a {
+    color: var(--accent-forest);
+    text-decoration: none;
+}
+
+.footer__text a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 600px) {
+    .container {
+        padding: 2rem 1rem;
+    }
+
+    .link-card {
+        padding: 1rem 1.25rem;
+    }
+
+    .link-card__icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .link-card__icon svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .header__badge {
+        font-size: 0.7rem;
+    }
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.link-card {
+    animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.link-card:nth-child(1) { animation-delay: 0.1s; }
+.link-card:nth-child(2) { animation-delay: 0.15s; }
+.link-card:nth-child(3) { animation-delay: 0.2s; }
+.link-card:nth-child(4) { animation-delay: 0.25s; }
+.link-card:nth-child(5) { animation-delay: 0.3s; }
+.link-card:nth-child(6) { animation-delay: 0.35s; }
+.link-card:nth-child(7) { animation-delay: 0.4s; }
+.link-card:nth-child(8) { animation-delay: 0.45s; }
