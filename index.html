@@ -5,139 +5,320 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elevressurser | Bergen Private Gymnas</title>
 
-    <!--
-    STYLESHEET KONFIGURASJON
-    ========================
-    Bytt mellom lokal og ekstern stylesheet ved å kommentere/avkommentere:
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    Lokal (utvikling):
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
 
-    Ekstern (produksjon) - oppdater URL når repo er klart:
-    <link rel="stylesheet" href="https://raw.githubusercontent.com/Metis-Utdanning/[STYLESHEET-REPO]/main/bpg-elevside/styles.css">
-
-    Eller via GitHub Pages (anbefalt for produksjon):
-    <link rel="stylesheet" href="https://metis-utdanning.github.io/[STYLESHEET-REPO]/bpg-elevside/styles.css">
-    -->
-
-    <!-- Aktiv stylesheet (lokal utvikling) -->
-    <link rel="stylesheet" href="css/styles.css">
-
-    <!-- Ekstern stylesheet (produksjon) - fjern kommentar når klar -->
-    <!-- <link rel="stylesheet" href="https://raw.githubusercontent.com/Metis-Utdanning/metis-stylesheets/main/bpg-elevside/styles.css"> -->
-
+    <!-- Microsoft Teams SDK -->
+    <script src="https://res.cdn.office.net/teams-js/2.0.0/js/MicrosoftTeams.min.js"></script>
 </head>
 <body>
-    <div class="container">
+    <!-- Ambient background -->
+    <div class="ambient-bg"></div>
+
+    <div class="dashboard">
+        <!-- Header -->
         <header class="header">
-            <span class="header__badge">Metis Utdanning</span>
-            <h1 class="header__title">Elevressurser</h1>
-            <p class="header__subtitle">Bergen Private Gymnas</p>
+            <div class="header__brand">
+                <div class="header__logo">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="10" fill="currentColor" fill-opacity="0.1"/>
+                        <path d="M12 28V12h6.5c1.5 0 2.7.4 3.6 1.2.9.8 1.4 1.9 1.4 3.3 0 1-.3 1.9-.8 2.6-.5.7-1.2 1.2-2.1 1.5v.1c1.1.2 2 .7 2.6 1.4.7.8 1 1.7 1 2.9 0 1.6-.5 2.9-1.6 3.8-1 .9-2.4 1.3-4.2 1.3H12zm3.2-9.3h3c1 0 1.7-.2 2.2-.7.5-.4.8-1 .8-1.8 0-.8-.3-1.4-.8-1.8-.5-.4-1.2-.6-2.2-.6h-3v4.9zm0 6.8h3.3c1 0 1.8-.2 2.4-.7.5-.5.8-1.1.8-2 0-.8-.3-1.5-.9-1.9-.6-.5-1.4-.7-2.5-.7h-3.1v5.3z" fill="currentColor"/>
+                    </svg>
+                </div>
+                <div class="header__text">
+                    <span class="header__school">Bergen Private Gymnas</span>
+                    <h1 class="header__title">Elevressurser</h1>
+                </div>
+            </div>
+            <div class="header__accent"></div>
         </header>
 
-        <nav class="links-grid">
-            <!-- InSchool -->
-            <a href="https://bergen-privategymnas.inschool.visma.no/" target="_blank" rel="noopener" class="link-card">
-                <div class="link-card__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
-                    </svg>
-                </div>
-                <div class="link-card__content">
-                    <h2 class="link-card__title">InSchool</h2>
-                    <p class="link-card__description">Timeplan, fravær og karakterer</p>
-                </div>
-                <svg class="link-card__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                </svg>
-            </a>
-
-            <!-- Elevsiden (krever pålogging) -->
-            <a href="https://metisutdanning.sharepoint.com/sites/BPG-Elev" target="_blank" rel="noopener" class="link-card link-card--auth">
-                <div class="link-card__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-                    </svg>
-                </div>
-                <div class="link-card__content">
-                    <h2 class="link-card__title">
-                        Elevsiden
-                        <span class="link-card__badge">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+        <!-- Main Content Grid -->
+        <main class="main-grid">
+            <!-- News Section -->
+            <section class="news-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="section-title__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/>
+                                <path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/>
                             </svg>
-                            Pålogging
                         </span>
+                        Siste nytt
                     </h2>
-                    <p class="link-card__description">Informasjon og ressurser for elever</p>
+                    <a href="https://www.bergenprivategymnas.no/nyhetsbrev" target="_blank" rel="noopener" class="section-link">
+                        Se alle
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                        </svg>
+                    </a>
                 </div>
-                <svg class="link-card__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                </svg>
-            </a>
 
-            <!-- Mine filer (krever pålogging) -->
-            <a href="https://metisutdanning-my.sharepoint.com/my" target="_blank" rel="noopener" class="link-card link-card--auth">
-                <div class="link-card__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
-                    </svg>
+                <div class="news-feed" id="newsFeed">
+                    <div class="news-loading">
+                        <div class="news-loading__spinner"></div>
+                        <span>Henter nyheter...</span>
+                    </div>
                 </div>
-                <div class="link-card__content">
-                    <h2 class="link-card__title">
-                        Mine filer
-                        <span class="link-card__badge">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+            </section>
+
+            <!-- Quick Links Section -->
+            <section class="links-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="section-title__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/>
+                                <rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/>
                             </svg>
-                            Pålogging
                         </span>
+                        Snarveier
                     </h2>
-                    <p class="link-card__description">OneDrive - dine dokumenter og filer</p>
                 </div>
-                <svg class="link-card__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                </svg>
-            </a>
 
-            <!-- Ny mobil / glemt passord -->
-            <a href="https://metis.checkid.no/v2" target="_blank" rel="noopener" class="link-card">
-                <div class="link-card__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
-                    </svg>
-                </div>
-                <div class="link-card__content">
-                    <h2 class="link-card__title">Ny mobil eller glemt passord?</h2>
-                    <p class="link-card__description">Tilbakestill passord og registrer ny enhet</p>
-                </div>
-                <svg class="link-card__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                </svg>
-            </a>
+                <nav class="quick-links">
+                    <!-- InSchool -->
+                    <a href="https://bergen-privategymnas.inschool.visma.no/" target="_blank" rel="noopener" class="quick-link quick-link--primary">
+                        <div class="quick-link__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342"/>
+                            </svg>
+                        </div>
+                        <div class="quick-link__content">
+                            <h3 class="quick-link__title">InSchool</h3>
+                            <p class="quick-link__desc">Timeplan, fravær og karakterer</p>
+                        </div>
+                        <span class="quick-link__arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14m-7-7 7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </a>
 
-            <!-- IT-informasjon -->
-            <a href="https://www.metisutdanning.no/it-informasjon" target="_blank" rel="noopener" class="link-card">
-                <div class="link-card__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
-                    </svg>
-                </div>
-                <div class="link-card__content">
-                    <h2 class="link-card__title">IT-informasjon</h2>
-                    <p class="link-card__description">Veiledninger og hjelp til IT-tjenester</p>
-                </div>
-                <svg class="link-card__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                </svg>
-            </a>
-        </nav>
+                    <!-- Elevsiden SharePoint -->
+                    <a href="https://metisutdanning.sharepoint.com/sites/BPG-Elev" data-teams-internal="true" class="quick-link">
+                        <div class="quick-link__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75"/>
+                            </svg>
+                        </div>
+                        <div class="quick-link__content">
+                            <h3 class="quick-link__title">Elevsiden</h3>
+                            <p class="quick-link__desc">Informasjon og ressurser</p>
+                        </div>
+                        <span class="quick-link__badge quick-link__badge--teams" title="Åpnes i Teams">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </span>
+                        <span class="quick-link__arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14m-7-7 7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </a>
 
+                    <!-- Mine filer -->
+                    <a href="https://metisutdanning-my.sharepoint.com/my" data-teams-internal="true" class="quick-link">
+                        <div class="quick-link__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/>
+                            </svg>
+                        </div>
+                        <div class="quick-link__content">
+                            <h3 class="quick-link__title">Mine filer</h3>
+                            <p class="quick-link__desc">OneDrive dokumenter</p>
+                        </div>
+                        <span class="quick-link__badge quick-link__badge--teams" title="Åpnes i Teams">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </span>
+                        <span class="quick-link__arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14m-7-7 7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </a>
+
+                    <!-- Passord/Mobil -->
+                    <a href="https://metis.checkid.no/v2" target="_blank" rel="noopener" class="quick-link">
+                        <div class="quick-link__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/>
+                            </svg>
+                        </div>
+                        <div class="quick-link__content">
+                            <h3 class="quick-link__title">Ny mobil / Passord</h3>
+                            <p class="quick-link__desc">Tilbakestill eller registrer</p>
+                        </div>
+                        <span class="quick-link__arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14m-7-7 7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </a>
+
+                    <!-- IT-informasjon -->
+                    <a href="https://www.metisutdanning.no/it-informasjon" target="_blank" rel="noopener" class="quick-link">
+                        <div class="quick-link__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/>
+                            </svg>
+                        </div>
+                        <div class="quick-link__content">
+                            <h3 class="quick-link__title">IT-hjelp</h3>
+                            <p class="quick-link__desc">Veiledninger og support</p>
+                        </div>
+                        <span class="quick-link__arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14m-7-7 7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </a>
+                </nav>
+            </section>
+        </main>
+
+        <!-- Footer -->
         <footer class="footer">
-            <p class="footer__text">
-                <a href="https://www.metisutdanning.no" target="_blank" rel="noopener">Metis Utdanning</a> · Bergen Private Gymnas
-            </p>
+            <div class="footer__content">
+                <span class="footer__org">Metis Utdanning</span>
+                <span class="footer__divider"></span>
+                <span class="footer__school">Bergen Private Gymnas</span>
+            </div>
         </footer>
     </div>
+
+    <script>
+        // Teams context state
+        let isInTeams = false;
+
+        // Initialize Microsoft Teams SDK if available
+        if (window.microsoftTeams) {
+            microsoftTeams.app.initialize().then(() => {
+                console.log('Teams SDK initialized');
+                isInTeams = true;
+                setupTeamsLinks();
+            }).catch((error) => {
+                console.log('Not in Teams context:', error);
+                // Fallback: add target="_blank" to internal links when outside Teams
+                setupExternalLinks();
+            });
+        } else {
+            // No Teams SDK, setup external links
+            setupExternalLinks();
+        }
+
+        // Setup links to open internally in Teams
+        function setupTeamsLinks() {
+            const internalLinks = document.querySelectorAll('[data-teams-internal="true"]');
+            internalLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const url = link.getAttribute('href');
+                    // Use executeDeepLink for SharePoint URLs to open in Teams
+                    if (window.microsoftTeams) {
+                        // Open in the current Teams window/tab
+                        window.open(url, '_top');
+                    }
+                });
+            });
+        }
+
+        // Setup links to open in new tab when outside Teams
+        function setupExternalLinks() {
+            const internalLinks = document.querySelectorAll('[data-teams-internal="true"]');
+            internalLinks.forEach(link => {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener');
+            });
+        }
+
+        // RSS Feed Fetcher
+        async function fetchNews() {
+            const feedContainer = document.getElementById('newsFeed');
+            const rssUrl = 'https://www.bergenprivategymnas.no/nyhetsbrev?format=rss';
+            const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`;
+
+            try {
+                const response = await fetch(proxyUrl);
+                const data = await response.json();
+
+                if (data.contents) {
+                    const parser = new DOMParser();
+                    const xml = parser.parseFromString(data.contents, 'text/xml');
+                    const items = xml.querySelectorAll('item');
+
+                    let newsHTML = '';
+                    const maxItems = 4;
+
+                    for (let i = 0; i < Math.min(items.length, maxItems); i++) {
+                        const item = items[i];
+                        const title = item.querySelector('title')?.textContent || 'Ingen tittel';
+                        const link = item.querySelector('link')?.textContent || '#';
+                        const pubDate = item.querySelector('pubDate')?.textContent;
+                        const description = item.querySelector('description')?.textContent || '';
+
+                        // Parse and format date
+                        let formattedDate = '';
+                        if (pubDate) {
+                            const date = new Date(pubDate);
+                            formattedDate = date.toLocaleDateString('no-NO', {
+                                day: 'numeric',
+                                month: 'short'
+                            });
+                        }
+
+                        // Strip HTML from description and truncate
+                        const tempDiv = document.createElement('div');
+                        tempDiv.innerHTML = description;
+                        const cleanDesc = tempDiv.textContent || tempDiv.innerText || '';
+                        const truncatedDesc = cleanDesc.substring(0, 120) + (cleanDesc.length > 120 ? '...' : '');
+
+                        newsHTML += `
+                            <a href="${link}" target="_blank" rel="noopener" class="news-card" style="animation-delay: ${i * 0.1}s">
+                                <div class="news-card__date">${formattedDate}</div>
+                                <h3 class="news-card__title">${title}</h3>
+                                <p class="news-card__excerpt">${truncatedDesc}</p>
+                                <span class="news-card__read">
+                                    Les mer
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M5 12h14m-7-7 7 7-7 7"/>
+                                    </svg>
+                                </span>
+                            </a>
+                        `;
+                    }
+
+                    feedContainer.innerHTML = newsHTML;
+                } else {
+                    throw new Error('No content in response');
+                }
+            } catch (error) {
+                console.error('Error fetching news:', error);
+                feedContainer.innerHTML = `
+                    <div class="news-error">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/>
+                        </svg>
+                        <p>Kunne ikke hente nyheter</p>
+                        <a href="https://www.bergenprivategymnas.no/nyhetsbrev" target="_blank" rel="noopener">
+                            Se nyheter på nettsiden
+                        </a>
+                    </div>
+                `;
+            }
+        }
+
+        // Fetch news on load
+        document.addEventListener('DOMContentLoaded', fetchNews);
+    </script>
 </body>
 </html>

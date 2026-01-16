@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.23/MicrosoftTeams.schema.json",
+  "version": "1.0.13",
+  "manifestVersion": "1.23",
+  "id": "20b25b6f-8cbc-45be-a9cc-a91e2aefedb8",
+  "name": {
+    "short": "BPG - Test"
+  },
+  "developer": {
+    "name": "Metis Utdanning",
+    "websiteUrl": "https://www.metisutdanning.no/",
+    "privacyUrl": "https://www.metisutdanning.no/",
+    "termsOfUseUrl": "https://www.metisutdanning.no/"
+  },
+  "description": {
+    "short": "Elevressurser - Landing page",
+    "full": "Landing page med snarveier til elevressurser for Bergen Private Gymnas"
+  },
+  "icons": {
+    "outline": "outline.png",
+    "color": "color.png"
+  },
+  "accentColor": "#2D5A47",
+  "staticTabs": [
+    {
+      "entityId": "elevressurser-github",
+      "name": "Elevressurser",
+      "contentUrl": "https://metis-utdanning.github.io/test-bpg-elevside_via_github/",
+      "websiteUrl": "https://metis-utdanning.github.io/test-bpg-elevside_via_github/",
+      "scopes": [
+        "personal"
+      ]
+    }
+  ],
+  "validDomains": [
+    "metis-utdanning.github.io"
+  ],
+  "isFullScreen": true
+}
