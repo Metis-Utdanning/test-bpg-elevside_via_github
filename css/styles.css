@@ -1,25 +1,27 @@
 /**
  * BPG Elevside — Nordic Editorial
  * Elegant magazine-inspired design
+ *
+ * Bruker Metis Design System for tema-variabler
+ * https://github.com/Metis-Utdanning/metis-design_system
  */
 
+/* Fallback-verdier (overskrevet av Metis Design System) */
 :root {
-    --forest: #1F4739;
-    --forest-dark: #163529;
-    --lime: #E8F5A3;
-    --lime-muted: #d8e89a;
-
-    --ink: #0f0f0f;
-    --ink-light: #444;
-    --ink-muted: #888;
-    --paper: #fefefe;
-    --paper-warm: #faf9f7;
-    --line: #e8e6e3;
-
-    --serif: 'Jubilat', Georgia, serif;
-    --sans: Helvetica, Arial, sans-serif;
-
-    --ease: cubic-bezier(0.23, 1, 0.32, 1);
+    --metis-primary: #1F4739;
+    --metis-primary-hover: #163529;
+    --metis-secondary: #E8F5A3;
+    --metis-secondary-muted: #d8e89a;
+    --metis-text-primary: #0f0f0f;
+    --metis-text-secondary: #444;
+    --metis-text-muted: #888;
+    --metis-white-pure: #fefefe;
+    --metis-white: #faf9f7;
+    --metis-border-color: #e8e6e3;
+    --metis-font-heading: 'Jubilat', Georgia, serif;
+    --metis-font-body: Helvetica, Arial, sans-serif;
+    --metis-ease-default: cubic-bezier(0.23, 1, 0.32, 1);
+    --metis-shadow-md: 0 4px 20px rgba(31,71,57,0.08);
 }
 
 *, *::before, *::after {
@@ -33,9 +35,9 @@ html {
 }
 
 body {
-    font-family: var(--sans);
-    background: var(--paper-warm);
-    color: var(--ink);
+    font-family: var(--metis-font-body);
+    background: var(--metis-white);
+    color: var(--metis-text-primary);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
 }
@@ -51,7 +53,7 @@ body {
 /* Header */
 .header {
     margin-bottom: 4rem;
-    animation: fadeIn 0.6s var(--ease) both;
+    animation: fadeIn 0.6s var(--metis-ease-default) both;
 }
 
 .header__top {
@@ -64,19 +66,19 @@ body {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: var(--forest);
-    background: linear-gradient(135deg, rgba(31,71,57,0.08), rgba(31,71,57,0.04));
+    color: var(--metis-primary);
+    background: linear-gradient(135deg, rgba(var(--metis-primary-rgb, 31,71,57),0.08), rgba(var(--metis-primary-rgb, 31,71,57),0.04));
     padding: 0.5rem 1rem;
     border-radius: 2rem;
 }
 
 .header__title {
-    font-family: var(--serif);
+    font-family: var(--metis-font-heading);
     font-size: clamp(2.5rem, 6vw, 3.5rem);
     font-weight: 400;
     letter-spacing: -0.02em;
     line-height: 1.1;
-    color: var(--ink);
+    color: var(--metis-text-primary);
 }
 
 .highlight {
@@ -91,7 +93,7 @@ body {
     right: -0.1em;
     bottom: 0.05em;
     height: 0.35em;
-    background: var(--lime);
+    background: var(--metis-secondary);
     z-index: -1;
     transform: skewX(-3deg);
 }
@@ -112,7 +114,7 @@ body {
 
 /* Panel */
 .panel {
-    animation: slideUp 0.6s var(--ease) both;
+    animation: slideUp 0.6s var(--metis-ease-default) both;
 }
 
 .panel--news {
@@ -129,21 +131,21 @@ body {
     align-items: baseline;
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid var(--metis-border-color);
 }
 
 .panel__title {
-    font-family: var(--sans);
+    font-family: var(--metis-font-body);
     font-size: 0.6875rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--ink-muted);
+    color: var(--metis-text-muted);
 }
 
 .panel__link {
     font-size: 0.8125rem;
-    color: var(--forest);
+    color: var(--metis-primary);
     text-decoration: none;
     display: inline-flex;
     align-items: center;
@@ -155,7 +157,7 @@ body {
 }
 
 .arrow {
-    transition: transform 0.2s var(--ease);
+    transition: transform 0.2s var(--metis-ease-default);
 }
 
 .panel__link:hover .arrow {
@@ -175,7 +177,7 @@ body {
 
 .skeleton-line {
     height: 1rem;
-    background: linear-gradient(90deg, var(--line) 0%, #f5f4f2 50%, var(--line) 100%);
+    background: linear-gradient(90deg, var(--metis-border-color) 0%, #f5f4f2 50%, var(--metis-border-color) 100%);
     background-size: 200% 100%;
     animation: shimmer 1.5s infinite;
     border-radius: 4px;
@@ -191,22 +193,22 @@ body {
     display: flex;
     gap: 1rem;
     padding: 1rem;
-    background: var(--paper);
-    border: 1px solid var(--line);
+    background: var(--metis-white-pure);
+    border: 1px solid var(--metis-border-color);
     border-radius: 10px;
     text-decoration: none;
     color: inherit;
-    transition: all 0.25s var(--ease);
+    transition: all 0.25s var(--metis-ease-default);
     overflow: hidden;
 }
 
 .news__card:hover {
-    border-color: var(--forest);
-    box-shadow: 0 4px 20px rgba(31,71,57,0.08);
+    border-color: var(--metis-primary);
+    box-shadow: var(--metis-shadow-md);
 }
 
 .news__card:hover .news__title {
-    color: var(--forest);
+    color: var(--metis-primary);
 }
 
 .news__image {
@@ -215,14 +217,14 @@ body {
     height: 70px;
     border-radius: 6px;
     overflow: hidden;
-    background: var(--line);
+    background: var(--metis-border-color);
 }
 
 .news__image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s var(--ease);
+    transition: transform 0.3s var(--metis-ease-default);
 }
 
 .news__card:hover .news__image img {
@@ -241,18 +243,18 @@ body {
     display: block;
     font-size: 0.6875rem;
     font-weight: 600;
-    color: var(--forest);
+    color: var(--metis-primary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: 0.25rem;
 }
 
 .news__title {
-    font-family: var(--serif);
+    font-family: var(--metis-font-heading);
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.35;
-    color: var(--ink);
+    color: var(--metis-text-primary);
     transition: color 0.2s ease;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -264,15 +266,15 @@ body {
     display: block;
     padding: 2rem;
     text-align: center;
-    color: var(--forest);
+    color: var(--metis-primary);
     text-decoration: none;
-    background: var(--paper);
+    background: var(--metis-white-pure);
     border-radius: 8px;
     font-size: 0.9375rem;
 }
 
 .news__fallback:hover {
-    background: rgba(31,71,57,0.04);
+    background: rgba(var(--metis-primary-rgb, 31,71,57),0.04);
 }
 
 /* Links & Cards */
@@ -287,12 +289,12 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 1.25rem 1.5rem;
-    background: var(--paper);
-    border: 1px solid var(--line);
+    background: var(--metis-white-pure);
+    border: 1px solid var(--metis-border-color);
     border-radius: 10px;
     text-decoration: none;
     color: inherit;
-    transition: all 0.25s var(--ease);
+    transition: all 0.25s var(--metis-ease-default);
     position: relative;
     overflow: hidden;
 }
@@ -304,15 +306,15 @@ body {
     top: 0;
     bottom: 0;
     width: 3px;
-    background: var(--lime);
+    background: var(--metis-secondary);
     transform: scaleY(0);
-    transition: transform 0.25s var(--ease);
+    transition: transform 0.25s var(--metis-ease-default);
 }
 
 .card:hover {
-    border-color: var(--forest);
+    border-color: var(--metis-primary);
     transform: translateX(4px);
-    box-shadow: 0 4px 20px rgba(31,71,57,0.08);
+    box-shadow: var(--metis-shadow-md);
 }
 
 .card:hover::before {
@@ -320,19 +322,19 @@ body {
 }
 
 .card--primary {
-    background: var(--forest);
-    border-color: var(--forest);
+    background: var(--metis-primary);
+    border-color: var(--metis-primary);
     color: white;
 }
 
 .card--primary::before {
-    background: var(--lime);
+    background: var(--metis-secondary);
     transform: scaleY(1);
 }
 
 .card--primary:hover {
-    background: var(--forest-dark);
-    border-color: var(--forest-dark);
+    background: var(--metis-primary-hover);
+    border-color: var(--metis-primary-hover);
 }
 
 .card--primary .card__desc {
@@ -355,19 +357,19 @@ body {
 
 .card__desc {
     font-size: 0.8125rem;
-    color: var(--ink-light);
+    color: var(--metis-text-secondary);
 }
 
 .card__arrow {
     font-size: 1.25rem;
-    color: var(--ink-muted);
-    transition: transform 0.2s var(--ease);
+    color: var(--metis-text-muted);
+    transition: transform 0.2s var(--metis-ease-default);
     margin-left: 1rem;
 }
 
 .card:hover .card__arrow {
     transform: translateX(4px);
-    color: var(--forest);
+    color: var(--metis-primary);
 }
 
 .card--primary:hover .card__arrow {
@@ -377,24 +379,67 @@ body {
 /* Footer */
 .footer {
     margin-top: 4rem;
-    animation: fadeIn 0.6s var(--ease) 0.3s both;
+    animation: fadeIn 0.6s var(--metis-ease-default) 0.3s both;
 }
 
 .footer__line {
     width: 3rem;
     height: 3px;
-    background: var(--lime);
+    background: var(--metis-secondary);
     margin-bottom: 1.5rem;
 }
 
 .footer__text {
     font-size: 0.8125rem;
-    color: var(--ink-muted);
+    color: var(--metis-text-muted);
 }
 
 .footer__org {
     font-weight: 500;
-    color: var(--forest);
+    color: var(--metis-primary);
+}
+
+/* Theme Switcher (for testing) */
+.theme-switcher {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+    display: flex;
+    gap: 4px;
+    background: white;
+    padding: 4px;
+    border-radius: 100px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.theme-switcher button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: transparent;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #666;
+}
+
+.theme-switcher button:hover {
+    color: #000;
+}
+
+.theme-switcher button.active {
+    background: var(--metis-primary);
+    color: white;
+}
+
+.theme-switcher button .dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
 }
 
 /* Animations */
@@ -441,6 +486,11 @@ body {
 
     .card {
         padding: 1rem 1.25rem;
+    }
+
+    .theme-switcher {
+        flex-wrap: wrap;
+        max-width: calc(100% - 2rem);
     }
 }
 

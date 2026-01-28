@@ -4,11 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elevressurser | Bergen Private Gymnas</title>
-    <!-- Jubilat loaded via Adobe Fonts / Typekit on the parent site -->
+    <!-- Metis Design System - Tema-variabler -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Metis-Utdanning/metis-design_system@main/dist/themes/bpg.css" id="metis-theme">
+    <!-- Lokal styling -->
     <link rel="stylesheet" href="https://metis-utdanning.github.io/test-bpg-elevside_via_github/css/styles.css">
     <script src="https://res.cdn.office.net/teams-js/2.0.0/js/MicrosoftTeams.min.js"></script>
 </head>
-<body>
+<body data-theme="bpg">
+    <!-- Theme Switcher (for testing) -->
+    <div class="theme-switcher">
+        <button class="active" data-theme="bpg" onclick="setTheme('bpg')">
+            <span class="dot" style="background:#1F4739"></span>BPG
+        </button>
+        <button data-theme="metis-vgs" onclick="setTheme('metis-vgs')">
+            <span class="dot" style="background:#EE2737"></span>VGS
+        </button>
+        <button data-theme="privatist" onclick="setTheme('privatist')">
+            <span class="dot" style="background:#00b398"></span>Privatist
+        </button>
+        <button data-theme="privatlarer" onclick="setTheme('privatlarer')">
+            <span class="dot" style="background:#FF8000"></span>PL
+        </button>
+        <button data-theme="metis" onclick="setTheme('metis')">
+            <span class="dot" style="background:#188AAD"></span>Metis
+        </button>
+    </div>
+
     <div class="container">
         <header class="header">
             <div class="header__top">
@@ -200,6 +221,44 @@
             document.addEventListener('DOMContentLoaded', loadNews);
         } else {
             loadNews();
+        }
+
+        // Theme Switcher - Metis Design System
+        const themeNames = {
+            'bpg': 'Bergen Private Gymnas',
+            'metis-vgs': 'Metis Videregående',
+            'privatist': 'Metis Privatist',
+            'privatlarer': 'Metis Privatlærer',
+            'metis': 'Metis Utdanning'
+        };
+
+        function setTheme(themeId) {
+            // Bytt CSS-fil
+            const themeLink = document.getElementById('metis-theme');
+            themeLink.href = `https://cdn.jsdelivr.net/gh/Metis-Utdanning/metis-design_system@main/dist/themes/${themeId}.css`;
+
+            // Oppdater data-theme
+            document.body.setAttribute('data-theme', themeId);
+
+            // Oppdater knapper
+            document.querySelectorAll('.theme-switcher button').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.theme === themeId);
+            });
+
+            // Oppdater badge-tekst
+            const badge = document.querySelector('.header__badge');
+            if (badge && themeNames[themeId]) {
+                badge.textContent = themeNames[themeId];
+            }
+
+            // Lagre preferanse
+            localStorage.setItem('elevside-theme', themeId);
+        }
+
+        // Last lagret tema
+        const savedTheme = localStorage.getItem('elevside-theme');
+        if (savedTheme && themeNames[savedTheme]) {
+            setTheme(savedTheme);
         }
     </script>
 </body>
